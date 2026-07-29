@@ -1,0 +1,24 @@
+import { Link } from "react-router-dom";
+
+function Header() {
+  return (
+    <header>
+      <div className="navbar bg-body-tertiary py-4 border-bottom">
+        <div className="container-fluid">
+          <Link to="/" className="d-flex align-items-center link-body-emphasis text-decoration-none">
+            <svg width={52} height={21} viewBox="0 0 78 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M55.5 0H77.5L58.5 32H36.5L55.5 0Z" fill="#FF7A00" />
+              <path d="M35.5 0H51.5L32.5 32H16.5L35.5 0Z" fill="#FF9736" />
+              <path d="M19.5 0H31.5L12.5 32H0.5L19.5 0Z" fill="#FFBC7D" />
+            </svg>
+            <span className="small mx-2 fw-semibold" style={{ color: "#FF7A00" }}>
+              TableServe
+            </span>
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
