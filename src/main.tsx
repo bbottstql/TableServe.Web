@@ -14,6 +14,7 @@ import StaffCreatePage from "./staff/StaffCreatePage.tsx";
 import StaffEditPage from "./staff/StaffEditPage.tsx";
 import OrderDetailPage from "./orders/OrderDetailPage.tsx";
 import CategoryDetailPage from "./categories/CategoryDetailPage.tsx";
+import CategoriesPage from "./categories/CategoriesPage.tsx";
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "staff/create", element: <StaffCreatePage />},
       { path: "staff/edit/:id", element: <StaffEditPage />},
       { path: "categories/detail/:id", element: <CategoryDetailPage />},
+      { path: "categories", element: <CategoriesPage />},
       // { path: "categories/edit/:id", element: < />},
     ],
   },

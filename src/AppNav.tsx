@@ -54,6 +54,19 @@ function AppNav() {
           Staff
         </Nav.Link>
       </Nav.Item>
+            <Nav.Item as="li">
+        <Nav.Link eventKey="/categories" as={Link} to="/categories">
+          <svg
+            className="bi pe-none me-2"
+            width={16}
+            height={16}
+            fill="currentColor"
+          >
+            <use xlinkHref={`${bootstrapIcons}#tags`} />
+          </svg>
+          Categories
+        </Nav.Link>
+      </Nav.Item>
       {/* Categories, Staff — add these Nav.Items as those pages get built */}
     </Nav>
   );

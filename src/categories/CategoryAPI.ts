@@ -10,4 +10,7 @@ export const categoryAPI = {
   find(id: number): Promise<ICategory> {
     return fetch(`${url}/${id}`).then((response) => response.json());
   },
+    delete(id: number) {
+    return fetch(`${url}/${id}`, { method: "DELETE" });
+  },
 };

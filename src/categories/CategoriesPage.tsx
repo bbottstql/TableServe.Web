@@ -1,0 +1,54 @@
+import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
+import { categoryAPI } from "./CategoryAPI";
+import { ICategory } from "./Icategory";
+import CategoryCard from "./CategoryCard";
+
+function CategoriesPage() {
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState<ICategory[]>([]);
+
+  async function loadStaff() {
+    setLoading(true);
+    try {
+      const categoryData = await categoryAPI.list();
+      setCategory(categoryData);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  function removeCategory(categoryToRemove: ICategory) {
+    setCategory((current) => current.filter((s) => s.id !== categoryToRemove.id));
+  }
+
+  useEffect(() => {
+    loadStaff();
+  }, []);
+
+  return (
+    <section className="content container-fluid mx-5 my-2 py-4">
+      <div className="d-flex justify-content-between pb-4 mb-4 border-bottom border-2">
+        <h2>Categories</h2>
+        <Link to="/categories/create" className="btn btn-primary">
+          Add Category
+        </Link>
+      </div>
+
+      <section className="list d-flex flex-row flex-wrap bg-light gap-5 p-4 rounded-4">
+        {loading && <p>Loading…</p>}
+        {category.map((categorymember) => (
+          <CategoryCard
+            key={categorymember.id}
+            category={categorymember}
+            onRemove={removeCategory}
+          />
+        ))}
+      </section>
+    </section>
+  );
+}
+
+export default CategoriesPage;
