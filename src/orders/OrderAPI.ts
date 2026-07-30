@@ -10,4 +10,7 @@ export const orderAPI = {
   delete(id: number) {
     return fetch(`${url}/${id}`, { method: "DELETE" });
   },
+  find(id: number): Promise<IOrder> {
+    return fetch(`${url}/${id}`).then((response) => response.json());
+  },
 };

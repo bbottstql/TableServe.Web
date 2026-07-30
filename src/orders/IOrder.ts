@@ -9,4 +9,5 @@ export interface IOrder {
   orderedAt: string;
   staffId: number | undefined;
   staff?: IStaff;
+  cancellationReason?: string;
 }
