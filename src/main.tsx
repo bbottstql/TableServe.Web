@@ -15,6 +15,8 @@ import StaffEditPage from "./staff/StaffEditPage.tsx";
 import OrderDetailPage from "./orders/OrderDetailPage.tsx";
 import CategoryDetailPage from "./categories/CategoryDetailPage.tsx";
 import CategoriesPage from "./categories/CategoriesPage.tsx";
+import CategoryCreatePage from "./categories/CategoryCreatePage.tsx";
+import CategoryEditPage from "./categories/CategoryEditPage.tsx";
 import OrderItemCreatePage from "./orderItems/OrderItemCreatePage.tsx";
 import OrderItemEditPage from "./orderItems/OrderItemEditPage.tsx";
 
@@ -41,7 +43,8 @@ const router = createBrowserRouter([
       { path: "staff/edit/:id", element: <StaffEditPage /> },
       { path: "categories/detail/:id", element: <CategoryDetailPage /> },
       { path: "categories", element: <CategoriesPage /> },
-      // { path: "categories/edit/:id", element: < />},
+      { path: "categories/create", element: <CategoryCreatePage /> },
+      { path: "categories/edit/:id", element: <CategoryEditPage /> },
     ],
   },
 ]);
