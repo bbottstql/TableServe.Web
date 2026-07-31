@@ -3,6 +3,7 @@ import type { IStaff } from "./IStaff";
 import { staffAPI } from "./StaffAPI";
 import StaffCard from "./StaffCard";
 import { Link } from "react-router-dom";
+import bootstrapIcons from "../assets/bootstrap-icons.svg";
 
 function StaffPage() {
   const [loading, setLoading] = useState(false);
@@ -32,7 +33,14 @@ function StaffPage() {
       <div className="d-flex justify-content-between pb-4 mb-4 border-bottom border-2">
         <h2>Staff</h2>
         <Link to="/staff/create" className="btn btn-primary">
-          Add Staff
+          <svg
+            className="bi pe-none me-2"
+            width={32}
+            height={32}
+            fill="#FFFFFF"
+          >
+            <use xlinkHref={`${bootstrapIcons}#plus`} />
+          </svg>Add Staff
         </Link>
       </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import bootstrapIcons from "../assets/bootstrap-icons.svg";
 import { Link } from "react-router-dom";
 import { categoryAPI } from "./CategoryAPI";
 import { ICategory } from "./Icategory";
@@ -33,7 +33,14 @@ function CategoriesPage() {
       <div className="d-flex justify-content-between pb-4 mb-4 border-bottom border-2">
         <h2>Categories</h2>
         <Link to="/categories/create" className="btn btn-primary">
-          Add Category
+          <svg
+            className="bi pe-none me-2"
+            width={32}
+            height={32}
+            fill="#FFFFFF"
+          >
+            <use xlinkHref={`${bootstrapIcons}#plus`} />
+          </svg>Add Category
         </Link>
       </div>
 
