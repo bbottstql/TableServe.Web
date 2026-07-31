@@ -1,3 +1,4 @@
+import { IOrderItem } from "../orderItems/IOrderItem";
 import { IStaff } from "../staff/IStaff";
 
 export interface IOrder {
@@ -10,4 +11,5 @@ export interface IOrder {
   staffId: number | undefined;
   staff?: IStaff;
   cancellationReason?: string;
+  orderItems?: IOrderItem[];
 }

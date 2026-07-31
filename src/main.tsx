@@ -15,7 +15,8 @@ import StaffEditPage from "./staff/StaffEditPage.tsx";
 import OrderDetailPage from "./orders/OrderDetailPage.tsx";
 import CategoryDetailPage from "./categories/CategoryDetailPage.tsx";
 import CategoriesPage from "./categories/CategoriesPage.tsx";
-
+import OrderItemCreatePage from "./orderItems/OrderItemCreatePage.tsx";
+import OrderItemEditPage from "./orderItems/OrderItemEditPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -25,13 +26,21 @@ const router = createBrowserRouter([
       { path: "menuitems", element: <MenuItemsPage /> },
       { path: "menuitems/create", element: <MenuItemCreatePage /> },
       { path: "menuitems/edit/:id", element: <MenuItemEditPage /> },
+      {
+        path: "orders/detail/:id/orderitem/create",
+        element: <OrderItemCreatePage />,
+      },
+      {
+        path: "orders/detail/:id/orderitem/edit/:itemId",
+        element: <OrderItemEditPage />,
+      },
       { path: "orders", element: <OrdersPage /> },
       { path: "orders/detail/:id", element: <OrderDetailPage /> },
       { path: "staff", element: <StaffPage /> },
-      { path: "staff/create", element: <StaffCreatePage />},
-      { path: "staff/edit/:id", element: <StaffEditPage />},
-      { path: "categories/detail/:id", element: <CategoryDetailPage />},
-      { path: "categories", element: <CategoriesPage />},
+      { path: "staff/create", element: <StaffCreatePage /> },
+      { path: "staff/edit/:id", element: <StaffEditPage /> },
+      { path: "categories/detail/:id", element: <CategoryDetailPage /> },
+      { path: "categories", element: <CategoriesPage /> },
       // { path: "categories/edit/:id", element: < />},
     ],
   },
@@ -42,4 +51,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
-
