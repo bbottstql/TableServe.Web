@@ -21,3 +21,6 @@ export function formatPhoneNumber(phoneNumber?: string) {
   const line = phoneNumber.substring(6, 10);
   return `(${area}) ${prefix}-${line}`;
 }
+ export function money(amount: number) {
+   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
+ }
