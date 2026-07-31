@@ -14,8 +14,8 @@ export function getTextBackgroundByStatus(status: string) {
       return "";
   }
 }
-export function formatPhoneNumber(phoneNumber: string) {
-  if (!phoneNumber) return;
+export function formatPhoneNumber(phoneNumber?: string) {
+  if (!phoneNumber) return undefined;
   const area = phoneNumber.substring(0, 3);
   const prefix = phoneNumber.substring(3, 6);
   const line = phoneNumber.substring(6, 10);
