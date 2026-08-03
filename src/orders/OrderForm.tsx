@@ -28,9 +28,7 @@ function OrderForm() {
     orderItems: [],
   };
 
-  useEffect(() => {
-    loadStaff();
-  }, []);
+
 
   const {
     register,
@@ -38,6 +36,7 @@ function OrderForm() {
     formState: { errors },
   } = useForm<IOrder>({
     defaultValues: async () => {
+      await loadStaff();
       if (!id) return emptyOrder;
       return await orderAPI.find(Number(id));
     },
