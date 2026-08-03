@@ -22,6 +22,8 @@ import OrderItemEditPage from "./orderItems/OrderItemEditPage.tsx";
 import IndexPage from "./IndexPage.tsx";
 import SignInPage from "./account/SignInPage.tsx";
 import App from "./App.tsx";
+import OrderCreatePage from "./orders/OrderCreatePage.tsx";
+import OrderEditPage from "./orders/OrderEditPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,8 @@ const router = createBrowserRouter([
             element: <OrderItemEditPage />,
           },
           { path: "orders", element: <OrdersPage /> },
+          {path: "orders/create", element: <OrderCreatePage /> },
+          {path: "orders/edit/:id", element: <OrderEditPage /> },
           { path: "orders/detail/:id", element: <OrderDetailPage /> },
           { path: "staff", element: <StaffPage /> },
           { path: "staff/create", element: <StaffCreatePage /> },

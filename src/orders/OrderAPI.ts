@@ -29,4 +29,19 @@ export const orderAPI = {
       headers: { "Content-Type": "application/json" },
     });
   },
+  post(order: IOrder): Promise<IOrder> {
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(order),
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => response.json());
+  },
+  put(order: IOrder): Promise<IOrder> {
+    return fetch(`${url}/${order.id}`, {
+      method: "PUT",
+      body: JSON.stringify(order),
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => response.json());
+  },
+  
 };

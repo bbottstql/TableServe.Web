@@ -47,6 +47,10 @@ function OrderRow({ order, onRemove }: IOrderRowProps) {
             <Dropdown.Item as={Link} to={`/orders/detail/${order.id}`}>
               View
             </Dropdown.Item>
+            <Dropdown.Item as={Link} to={`/orders/edit/${order.id}`}>
+              Edit
+            </Dropdown.Item>
+            <Dropdown.Divider />
             <Dropdown.Item
               as="a"
               href="#"
