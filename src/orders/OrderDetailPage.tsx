@@ -9,12 +9,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { money } from "../utility/formatUtilities";
 import { orderItemAPI } from "../orderItems/OrderItemAPI.ts";
 import { IOrderItem } from "../orderItems/IOrderItem.ts";
+import { useStaffContext } from "../App.tsx";
 
 interface ICancelForm {
   cancellationReason: string | undefined;
 }
 
 function OrderDetailPage() {
+  const { staff } = useStaffContext();       // the signed-in user
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState<IOrder | undefined>(undefined);
@@ -22,6 +24,8 @@ function OrderDetailPage() {
   const [isCancelOpen, setIsCancelOpen] = useState(false);
   const openCancel = () => setIsCancelOpen(true); // ← the Cancel Order button (§2) calls this
   const closeCancel = () => setIsCancelOpen(false);
+  const isOwnOrder = order?.staffId === staff?.id;
+  const canCancel = isOwnOrder || staff?.isManager;
 
   async function loadOrder() {
     setLoading(true);
@@ -172,7 +176,7 @@ function OrderDetailPage() {
               <button className="btn btn-primary" onClick={markReady}>
                 Mark Ready
               </button>
-              <button className="btn btn-outline-danger" onClick={openCancel}>
+              <button className="btn btn-outline-danger" onClick={openCancel} disabled={!canCancel}>
                 Cancel Order
               </button>
             </>

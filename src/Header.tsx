@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useStaffContext } from "./App";
 
 function Header() {
+     const { staff, setStaff } = useStaffContext();
+   const navigate = useNavigate();
+
+   function signout() {
+     localStorage.removeItem("staff");   // clear storage
+     setStaff(undefined);                 // clear context → "signed out"
+     navigate("/signin");
+   }
+
   return (
     <header>
       <div className="navbar bg-body-tertiary py-4 border-bottom">
@@ -15,6 +26,29 @@ function Header() {
               TableServe
             </span>
           </Link>
+                     {staff ? (
+             <Dropdown className="me-4">
+               <Dropdown.Toggle as="a" variant="light"
+                 className="d-flex text-secondary align-items-center text-decoration-none">
+                 <div
+                   style={{ width: "3rem", height: "3rem" }}
+                   className="d-flex bg-primary-subtle fs-5 text-secondary align-items-center justify-content-center rounded-circle me-2"
+                 >
+                   {staff?.firstName.substring(0, 1)}{staff?.lastName.substring(0, 1)}
+                 </div>
+                 <strong> {staff?.firstName} {staff?.lastName}</strong>
+               </Dropdown.Toggle>
+               <Dropdown.Menu>
+                 <Dropdown.Item href="#">Settings</Dropdown.Item>
+                 <Dropdown.Item href="#">Profile</Dropdown.Item>
+                 <Dropdown.Divider />
+                 <Dropdown.Item as="button" onClick={signout}>Sign out</Dropdown.Item>
+               </Dropdown.Menu>
+             </Dropdown>
+           ) : (
+             <Link to="/signin" className="btn btn-primary">Sign in</Link>
+           )}
+
         </div>
       </div>
     </header>

@@ -19,32 +19,45 @@ import CategoryCreatePage from "./categories/CategoryCreatePage.tsx";
 import CategoryEditPage from "./categories/CategoryEditPage.tsx";
 import OrderItemCreatePage from "./orderItems/OrderItemCreatePage.tsx";
 import OrderItemEditPage from "./orderItems/OrderItemEditPage.tsx";
+import IndexPage from "./IndexPage.tsx";
+import SignInPage from "./account/SignInPage.tsx";
+import App from "./App.tsx";
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
-    errorElement: <ErrorPage />,
+    path: "/",
+    element: <App />, // outer wrapper — holds Context  Toaster
+    errorElement: <ErrorPage />, // moved up here from the Layout route
     children: [
-      { path: "menuitems", element: <MenuItemsPage /> },
-      { path: "menuitems/create", element: <MenuItemCreatePage /> },
-      { path: "menuitems/edit/:id", element: <MenuItemEditPage /> },
+      { path: "signin", element: <SignInPage /> }, // sibling of Layout → no shell
+
       {
-        path: "orders/detail/:id/orderitem/create",
-        element: <OrderItemCreatePage />,
+        element: <Layout />,
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <IndexPage /> },
+          { path: "menuitems", element: <MenuItemsPage /> },
+          { path: "menuitems/create", element: <MenuItemCreatePage /> },
+          { path: "menuitems/edit/:id", element: <MenuItemEditPage /> },
+          {
+            path: "orders/detail/:id/orderitem/create",
+            element: <OrderItemCreatePage />,
+          },
+          {
+            path: "orders/detail/:id/orderitem/edit/:itemId",
+            element: <OrderItemEditPage />,
+          },
+          { path: "orders", element: <OrdersPage /> },
+          { path: "orders/detail/:id", element: <OrderDetailPage /> },
+          { path: "staff", element: <StaffPage /> },
+          { path: "staff/create", element: <StaffCreatePage /> },
+          { path: "staff/edit/:id", element: <StaffEditPage /> },
+          { path: "categories/detail/:id", element: <CategoryDetailPage /> },
+          { path: "categories", element: <CategoriesPage /> },
+          { path: "categories/create", element: <CategoryCreatePage /> },
+          { path: "categories/edit/:id", element: <CategoryEditPage /> },
+        ],
       },
-      {
-        path: "orders/detail/:id/orderitem/edit/:itemId",
-        element: <OrderItemEditPage />,
-      },
-      { path: "orders", element: <OrdersPage /> },
-      { path: "orders/detail/:id", element: <OrderDetailPage /> },
-      { path: "staff", element: <StaffPage /> },
-      { path: "staff/create", element: <StaffCreatePage /> },
-      { path: "staff/edit/:id", element: <StaffEditPage /> },
-      { path: "categories/detail/:id", element: <CategoryDetailPage /> },
-      { path: "categories", element: <CategoriesPage /> },
-      { path: "categories/create", element: <CategoryCreatePage /> },
-      { path: "categories/edit/:id", element: <CategoryEditPage /> },
     ],
   },
 ]);

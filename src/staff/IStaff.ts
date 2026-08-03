@@ -5,6 +5,7 @@ export interface IStaff {
   phone?: string;
   email?: string;
   username: string;
+  password?: string;
   isManager: boolean;
   isAdmin: boolean;
 }
