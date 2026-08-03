@@ -165,6 +165,7 @@ function OrderDetailPage() {
 
       <div className="d-flex justify-content-between pb-4 mb-4 border-bottom border-2">
         <h2>Order</h2>
+        
         <div className="d-flex justify-content-end gap-2">
           {order?.status === "PLACED" && (
             <button className="btn btn-primary" onClick={startPreparing}>
