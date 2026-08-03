@@ -5,13 +5,18 @@ import { menuItemAPI } from "./MenuItemAPI";
 import MenuItemCard from "./MenuItemCard";
 import MenuItemCardSkeleton from "./MenuItemCardSkeleton";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function MenuItemsPage() {
   const [loading, setLoading] = useState(false);
   const [menuItems, setMenuItems] = useState<IMenuItem[]>([]);
-   const menuItemCardSkeletons = Array.from(Array(12), (_value, index) => (
-     <MenuItemCardSkeleton key={index} />
-   ));
+  const menuItemCardSkeletons = Array.from(Array(12), (_value, index) => (
+    <MenuItemCardSkeleton key={index} />
+  ));
+
+  function removeMenuItem(deleted: IMenuItem) {
+    setMenuItems(menuItems.filter((menuItem) => menuItem.id !== deleted.id));
+  }
 
   async function loadMenuItems() {
     setLoading(true);
@@ -19,7 +24,7 @@ function MenuItemsPage() {
       const data = await menuItemAPI.list();
       setMenuItems(data);
     } catch (error: any) {
-      console.error(error);
+      toast.error(error.message, { duration: 6000 });
     } finally {
       setLoading(false);
     }
@@ -33,19 +38,26 @@ function MenuItemsPage() {
     <section className="content container-fluid mx-5 my-2 py-4">
       <div className="d-flex justify-content-between pb-4 mb-4 border-bottom border-2">
         <h2>Menu</h2>
-        <Link to="/menuitems/create" className="btn btn-primary"><svg
+        <Link to="/menuitems/create" className="btn btn-primary">
+          <svg
             className="bi pe-none me-2"
             width={32}
             height={32}
             fill="#FFFFFF"
           >
             <use xlinkHref={`${bootstrapIcons}#plus`} />
-          </svg> Add Item</Link>
-        </div>
+          </svg>{" "}
+          Add Item
+        </Link>
+      </div>
       <section className="list d-flex flex-row flex-wrap bg-light gap-5 p-4 rounded-4">
         {loading && menuItemCardSkeletons}
         {menuItems.map((menuItem) => (
-          <MenuItemCard key={menuItem.id} menuItem={menuItem} />
+          <MenuItemCard
+            key={menuItem.id}
+            menuItem={menuItem}
+            onRemove={removeMenuItem}
+          />
         ))}
       </section>
     </section>

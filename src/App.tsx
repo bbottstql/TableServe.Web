@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";   // back in App now (it left the tree in Lesson 5)
+import "bootstrap/dist/css/bootstrap.min.css"; // back in App now (it left the tree in Lesson 5)
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import { createContext, useContext, useState } from "react";
@@ -18,20 +18,26 @@ export function useStaffContext(): StaffContextType {
   return staffContext;
 }
 
- function getPersistedStaff() {
-   const staffAsJSON = localStorage.getItem("staff");
-   if (!staffAsJSON) return undefined;
-   return JSON.parse(staffAsJSON);
- }
+function getPersistedStaff() {
+  const staffAsJSON = localStorage.getItem("staff");
+  if (!staffAsJSON) return undefined;
+  return JSON.parse(staffAsJSON);
+}
 
- function App() {
-   const [staff, setStaff] = useState<IStaff | undefined>(getPersistedStaff());
-   return (
-     <StaffContext.Provider value={{ staff, setStaff }}>
-       <Toaster />
-       <Outlet />
-     </StaffContext.Provider>
-   );
- }
+function App() {
+  const [staff, setStaff] = useState<IStaff | undefined>(getPersistedStaff());
+  return (
+    <StaffContext.Provider value={{ staff, setStaff }}>
+      <Toaster
+        toastOptions={{
+          success: { iconTheme: { primary: "#FF7A00", secondary: "white" } },
+          style: { maxWidth: 500 },
+        }}
+      />
 
- export default App;
+      <Outlet />
+    </StaffContext.Provider>
+  );
+}
+
+export default App;

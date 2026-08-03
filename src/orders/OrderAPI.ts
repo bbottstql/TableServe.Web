@@ -1,3 +1,4 @@
+import { checkStatus, parseJSON } from "../utility/fetchUtilities";
 import { IOrder } from "./IOrder";
 
 const url = "http://localhost:5072/api/orders";
@@ -5,13 +6,13 @@ const url = "http://localhost:5072/api/orders";
 export const orderAPI = {
   list(status?: string): Promise<IOrder[]> {
     const query = status ? `?status=${status}` : "";
-    return fetch(`${url}${query}`).then((response) => response.json());
+    return fetch(`${url}${query}`).then(checkStatus).then(parseJSON);
   },
   delete(id: number) {
-    return fetch(`${url}/${id}`, { method: "DELETE" });
+    return fetch(`${url}/${id}`, { method: "DELETE" }).then(checkStatus);;
   },
   find(id: number): Promise<IOrder> {
-    return fetch(`${url}/${id}`).then((response) => response.json());
+    return fetch(`${url}/${id}`).then(checkStatus).then(parseJSON);
   },
   startPreparing(id: number) {
     return fetch(`${url}/${id}/startpreparing`, { method: "PUT" });
@@ -34,14 +35,14 @@ export const orderAPI = {
       method: "POST",
       body: JSON.stringify(order),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json());
+    }).then(checkStatus).then(parseJSON);
   },
   put(order: IOrder): Promise<IOrder> {
     return fetch(`${url}/${order.id}`, {
       method: "PUT",
       body: JSON.stringify(order),
       headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json());
+    }).then(checkStatus).then(parseJSON);
   },
-  
+
 };

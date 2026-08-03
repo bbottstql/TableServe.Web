@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { categoryAPI } from "./CategoryAPI";
 import { ICategory } from "./Icategory";
 import CategoryCard from "./CategoryCard";
+import toast from "react-hot-toast";
 
 function CategoriesPage() {
   const [loading, setLoading] = useState(false);
@@ -14,8 +15,8 @@ function CategoriesPage() {
     try {
       const categoryData = await categoryAPI.list();
       setCategory(categoryData);
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      toast.error(error.message, { duration: 6000 });
     } finally {
       setLoading(false);
     }
