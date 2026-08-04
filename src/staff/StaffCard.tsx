@@ -15,7 +15,7 @@ function StaffCard({ staff, onRemove }: IStaffCardProps) {
        <div className="card p-4" style={{ width: '23rem' }}>
       <div className="d-flex justify-content-end">
         <Dropdown className="d-inline">
-          <Dropdown.Toggle className="btn btn-light no-caret" style={{ background: 'none' }}>
+          <Dropdown.Toggle variant="light" className="no-caret" style={{ background: "none" }}>
             <svg className="bi pe-none" width={20} height={20} fill="#007AFF">
               <use xlinkHref={`${bootstrapIcons}#three-dots-vertical`} />
             </svg>

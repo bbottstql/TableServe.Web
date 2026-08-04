@@ -16,7 +16,8 @@ function MenuItemCard({ menuItem, onRemove }: IMenuItemCardProps) {
       <div className="d-flex justify-content-end">
         <Dropdown>
           <Dropdown.Toggle
-            className="btn btn-light"
+            variant="light"
+            className="no-caret"
             style={{ background: "none" }}
           >
             <svg className="bi pe-none" width={20} height={20} fill="#007AFF">
