@@ -5,10 +5,14 @@ import { categoryAPI } from "./CategoryAPI";
 import { ICategory } from "./Icategory";
 import CategoryCard from "./CategoryCard";
 import toast from "react-hot-toast";
+import CategoryCardSkeleton from "./CategoryCardSkeleton";
 
 function CategoriesPage() {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState<ICategory[]>([]);
+  const categoryCardSkeleton = Array.from(Array(12), (_value, index) => (
+    <CategoryCardSkeleton key={index} />
+  ));
 
   async function loadStaff() {
     setLoading(true);
@@ -46,7 +50,7 @@ function CategoriesPage() {
       </div>
 
       <section className="list d-flex flex-row flex-wrap bg-light gap-5 p-4 rounded-4">
-        {loading && <p>Loading…</p>}
+        {loading && categoryCardSkeleton}
         {category.map((categorymember) => (
           <CategoryCard
             key={categorymember.id}

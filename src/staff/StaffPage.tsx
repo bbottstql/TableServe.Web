@@ -5,10 +5,14 @@ import StaffCard from "./StaffCard";
 import { Link } from "react-router-dom";
 import bootstrapIcons from "../assets/bootstrap-icons.svg";
 import toast from "react-hot-toast";
+import StaffCardSkeleton from "./StaffCardSkeleton";
 
 function StaffPage() {
   const [loading, setLoading] = useState(false);
   const [staff, setStaff] = useState<IStaff[]>([]);
+  const staffCardSkeletons = Array.from(Array(12), (_value, index) => (
+    <StaffCardSkeleton key={index} />
+  ));
 
   async function loadStaff() {
     setLoading(true);
@@ -46,7 +50,7 @@ function StaffPage() {
       </div>
 
       <section className="list d-flex flex-row flex-wrap bg-light gap-5 p-4 rounded-4">
-        {loading && <p>Loading…</p>}
+        {loading && staffCardSkeletons}
         {staff.map((staffMember) => (
           <StaffCard
             key={staffMember.id}
