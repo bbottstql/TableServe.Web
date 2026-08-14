@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import bootstrapIcons from "../assets/bootstrap-icons.svg";
 import { Link } from "react-router-dom";
 import { categoryAPI } from "./CategoryAPI";
-import { ICategory } from "./Icategory";
+import { ICategory } from "./ICategory";
 import CategoryCard from "./CategoryCard";
 import toast from "react-hot-toast";
 import CategoryCardSkeleton from "./CategoryCardSkeleton";

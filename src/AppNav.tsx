@@ -73,7 +73,7 @@ function AppNav() {
           </Nav.Item>
         </>
       )}
-      {/* Categories, Staff — add these Nav.Items as those pages get built */}
+      
     </Nav>
   );
 }

@@ -1,4 +1,5 @@
-import { ICategory } from "../categories/Icategory";
+import { ICategory } from "../categories/ICategory";
+
 
 export interface IMenuItem {
   id: number | undefined;

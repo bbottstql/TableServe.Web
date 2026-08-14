@@ -7,7 +7,7 @@ import { IMenuItem } from "./IMenuItem";
 import { menuItemAPI } from "./MenuItemAPI";
 import { categoryAPI } from "../categories/CategoryAPI";
 import toast from "react-hot-toast";
-import { ICategory } from "../categories/Icategory";
+import { ICategory } from "../categories/ICategory";
 
 const emptyMenuItem: IMenuItem = {
   id: undefined,

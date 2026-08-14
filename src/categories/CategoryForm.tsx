@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import bootstrapIcons from "../assets/bootstrap-icons.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { ICategory } from "./Icategory";
+import { ICategory } from "./ICategory";
 import { categoryAPI } from "./CategoryAPI";
 
 const emptyCategory: ICategory = {

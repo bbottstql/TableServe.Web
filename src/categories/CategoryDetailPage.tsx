@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { categoryAPI } from "./CategoryAPI";
-import { ICategory } from "./Icategory";
+import { ICategory } from "./ICategory";
 
 function OrderDetailPage() {
   const { id } = useParams<{ id: string }>();

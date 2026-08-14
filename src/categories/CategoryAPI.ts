@@ -1,5 +1,5 @@
 import { BASE_URL, checkStatus, parseJSON } from "../utility/fetchUtilities";
-import { ICategory } from "./Icategory";
+import { ICategory } from "./ICategory";
 
 const url = `${BASE_URL}/categories`;
 

@@ -1,5 +1,5 @@
 import { Dropdown } from "react-bootstrap";
-import { ICategory } from "./Icategory";
+import { ICategory } from "./ICategory";
 import { Link } from "react-router-dom";
 import { categoryAPI } from "./CategoryAPI";
 import bootstrapIcons from "../assets/bootstrap-icons.svg";
