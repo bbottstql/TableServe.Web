@@ -6,17 +6,7 @@ import "@testing-library/jest-dom/vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-const staff: IStaff = {
-  id: 1,
-  username: "ada.lovelace",
-  password: "",
-  firstName: "Ada",
-  lastName: "Lovelace",
-  phone: "8005551234",
-  email: "ada@tableserve.test",
-  isManager: false,
-  isAdmin: false,
-};
+
 
 function makeStaff(overrides: Partial<IStaff> = {}): IStaff {
   return {
@@ -52,4 +42,7 @@ it("shows controls and contact info for an admin staff card", async () => {
   expect(screen.getByText(/ada@tableserve.test/i)).toBeInTheDocument();
 
   expect(screen.getByText(/\(800\) 555-1234/)).toBeInTheDocument();
+
+  expect(screen.getByText("Admin")).toBeInTheDocument();
+  expect(screen.queryByText("Manager")).not.toBeInTheDocument();
 });
